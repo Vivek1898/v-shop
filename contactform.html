@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <title>SHOP</title>
+   <!-- icon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="myhcss.css">
+    
+     <!-- font awesome -->
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <!-- j query -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+
+/* RESET RULES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+:root {
+  --white: #afafaf;
+  --red: #e31b23;
+  --bodyColor: #292a2b;
+  --borderFormEls: hsl(0, 0%, 10%);
+  --bgFormEls: hsl(0, 0%, 14%);
+  --bgFormElsFocus: hsl(0, 7%, 20%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+button,
+label {
+  cursor: pointer;
+}
+
+select {
+  appearance: none;
+}
+
+
+
+textarea {
+  resize: none;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font: 18px/1.5 "Open Sans", sans-serif;
+  background: var(--bodyColor);
+  color: var(--white);
+  margin: 1.5rem 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+
+/* FORM ELEMENTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.my-form h1 {
+  margin-bottom: 1.5rem;
+}
+
+.my-form li,
+.my-form .grid > *:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.my-form select,
+.my-form input,
+.my-form textarea,
+.my-form button {
+  width: 100%;
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: var(--white);
+  background: var(--bgFormEls);
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+
+.my-form textarea {
+  height: 170px;
+}
+
+.my-form ::placeholder {
+  color: inherit;
+  /*Fix opacity issue on Firefox*/
+  opacity: 1;
+}
+
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus,
+.my-form button:enabled:hover,
+.my-form button:focus,
+.my-form input[type="checkbox"]:focus + label {
+  background: var(--bgFormElsFocus);
+}
+
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus {
+  transform: scale(1.02);
+}
+
+.my-form .required,
+.my-form select {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+
+.my-form .required {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg);  
+}
+
+.my-form select {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/down.svg);
+}
+
+.my-form *:disabled {
+  cursor: default;
+  
+}
+
+
+/* FORM BTNS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.my-form .required-msg {
+  display: none;
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/asterisk.svg)
+    no-repeat center left / 15px 15px;
+  padding-left: 20px;
+}
+
+.my-form .btn-grid {
+  position: relative;
+  overflow: hidden;
+  /* transition: filter 0.2s; */
+}
+
+.btan {
+  font-weight: bold;
+  cursor: pointer;
+}
+.btan:hover {
+  background-color:grey ;
+}
+
+
+.my-form button > * {
+  display: inline-block;
+  width: 100%;
+ 
+}
+
+.my-form button .back {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+}
+
+/* FOOTER
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+footer {
+  font-size: 1rem;
+  text-align: right;
+  backface-visibility: hidden;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer span {
+  color: var(--red);
+}
+
+
+/* MQ
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+@media screen and (min-width: 600px) {
+  .my-form .grid {
+    display: grid;
+    grid-gap: 1.5rem;
+  }
+
+  .my-form .grid-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .my-form .grid-3 {
+    grid-template-columns: auto auto auto;
+    align-items: center;
+  }
+
+  .my-form .grid > *:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  .my-form .required-msg {
+    display: block;
+  }
+}
+
+
+    </style>
+
+</head>
+<body id="myhome">
+ <!-- navbar -->
+<nav id="navbar2" class="navbar">
+
+    
+        <div class="menu-icon">
+  <span class="fas fa-bars"></span></div>
+  <div class="mylogo"  >
+   
+    v-SH<span>O</span>P</div>
+  <div class="nav-items">
+    <li><a href="#">&nbsp;&nbsp;  &nbsp;</a></li>
+  <li><a href="myhtml.html">Home</a></li>
+  </div>
+  <div class="search-icon">
+  <span class="fas fa-search"></span></div>
+  <div class="cancel-icon">
+  <span class="fas fa-times"></span></div>
+  <form action="#">
+          <input type="search" class="search-data" placeholder="Search" required>
+          <button type="submit" class="fas fa-search"></button>
+        </form>
+  </nav>
+  <br>
+  <form class="my-form" onsubmit="return(validate());" >
+    <div class="container">
+      <h1>Get in <br> touch!! &nbsp;&nbsp;&nbsp;&nbsp;</h1>
+      <ul>
+        <li>
+          <select>
+            <option selected  disabled>-- Please choose an option --</option>
+            <option>Sell Product</option>
+            <option>Defected Product</option>
+            <option>Return Product</option>
+            <option>Other</option>      
+          </select>
+        </li>
+        <li>
+          <div class="grid grid-2">
+            <input type="text" placeholder="First Name" name="Name" id="t1"  class="required" >  
+            <input type="text" placeholder="Last name"  class="required" >
+          </div>
+        </li>
+        <li>
+          <div class="grid grid-2">
+            <input type="email" placeholder="Email" name="EMail" id="t2" class="required" >  
+            <input type="text" name="mobile" placeholder="Phone" id="t5" class="required">
+          </div>
+        </li>    
+        <li>
+          <textarea placeholder="Message"></textarea>
+        </li>   
+       
+          <div class="grid grid-3">
+            <div class="required-msg">REQUIRED FIELDS</div>
+            
+            
+           <input style="color: var(--accent-dark);"  class="btan" id="submitbtn"  type="submit" value="Submit" >
+          
+          </input>
+            
+              <input  style="color: var(--accent-dark);" class="btan" id="cancelbtn"type="reset" onclick="return(validate2());"/>
+             
+          </div>
+        </li>    
+      </ul>
+    </div>
+  </form>
+ 
+  <br>
+  <!-- Products slider-->
+  <footer id="returnfooter">
+    
+   
+    <div class="footer__top">
+      <div class="footer__address">
+        <h4 class="footer__address-heading">Address</h4>
+        <p>110026 VIC ABD</p>
+        <p>New Delhi,India</p>
+        <p>XXXXXXXXXXXXXXX</p>
+      </div>
+      
+      <div class="footer__social">
+        <h4 class="footer__address-heading">Social Media</h4>
+        <a href="https://www.facebook.com" style="color: teal;"class=" social-icon fab fa-facebook"></a>
+        <a href="https://www.instagram.com" style="color: teal;"class=" social-icon fab fa-instagram"></a>
+        <a href="mailto:viveksingh27795@gmail.com" style="color: teal;" class=" fas fa-envelope"></a>
+    <a href="https://www.twitter.com" style="color: teal;"class="social-icon fab fa-twitter"></a>
+      </div>
+      <div class="footer__contact">
+        <h4 class="footer__contact-heading"> Contact</h4>
+        <p>Office Hours: 24/7</p>
+        <p>Tel: 990-098-8776</p>
+        <p>&nbsp;Email: viveksingh27795@gmail.com</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© Copyright 2021 &nbsp;  v-SH<span>O</span>P &nbsp;  Marketing Agency. All Rights Reserved</p>
+    </div>
+  </footer>
+  
+   <script>
+       const menuBtn = document.querySelector(".menu-icon span");
+    const searchBtn = document.querySelector(".search-icon");
+    const cancelBtn = document.querySelector(".cancel-icon");
+    const items = document.querySelector(".nav-items");
+    const form = document.querySelector("form");
+    menuBtn.onclick = ()=>{
+      items.classList.add("active");
+      menuBtn.classList.add("hide");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+    cancelBtn.onclick = ()=>{
+      items.classList.remove("active");
+      menuBtn.classList.remove("hide");
+      searchBtn.classList.remove("hide");
+      cancelBtn.classList.remove("show");
+      form.classList.remove("active");
+      cancelBtn.style.color = "#ff3d00";
+    }
+    searchBtn.onclick = ()=>{
+      form.classList.add("active");
+      searchBtn.classList.add("hide");
+      cancelBtn.classList.add("show");
+    }
+    //submit reset
+    // var submit=document.getElementById('submitbtn')
+    // var cancel=document.getElementById('cancelbtn')
+    // submit.addEventListener('click',show);
+    // cancel.addEventListener('click',show2);
+    // function show() {
+     
+     
+    //   alert("Response Sucessfully Submitted")
+    // }
+
+    // function show2() {
+    //   alert("Sucessfully Resetted")
+    // }
+
+    function validate()
+      {
+      
+         if( document.getElementById("t1").value== "" )
+         {
+            alert( "Please provide your name!" );
+            document.getElementById("t1").focus() ;
+            return false;
+         }
+          var emailID = document.getElementById("t2").value;
+         atpos = emailID.indexOf("@");
+         dotpos = emailID.lastIndexOf(".");       
+         if (document.getElementById("t2").value == "" || atpos < 1 || ( dotpos - atpos < 2 )) 
+         {
+            alert("Please enter correct email ID")
+            document.getElementById("t2").focus() ;
+            return false;
+         }
+         if( document.getElementById("t5").value == "" )
+         {
+            alert( "Please provide your Mobile number" );
+document.getElementById("t5").focus() ;
+            return false;
+         }
+if(isNaN(document.getElementById("t5").value ))
+         {
+            alert( "It's not a valid number" );
+document.getElementById("t5").focus() ;
+            return false;
+         }
+if( document.getElementById("t5").value.length<10 )
+         {
+            alert( "Please provide valid Mobile number" );
+document.getElementById("t5").focus() ;
+            return false;
+         }
+         return( alert("Sucessfully submitted") );
+      }    
+      function validate2() {
+      
+        
+        return(alert("Reset sucessfull"));
+        
+      }
+   </script>
+   </body>
+</html>
